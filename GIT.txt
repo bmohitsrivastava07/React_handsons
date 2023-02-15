@@ -1,0 +1,467 @@
+*GIT:-
+______________
+
+
+
+
+--> GIT vs GIT HUB:-
+--------------------
+*Git is a source control system that allows you to track versions of your work in project containers called repositories, or repos. 
+*
+
+
+--> What is GIT:-
+----------------
+
+* Git is a DevOps tool used for source code management. It is a free and open-source version control system used to handle small to very large projects efficiently. Git is used to tracking changes in the source code, enabling multiple developers to work together on non-linear development. 
+*Git is a version control system used for tracking changes in computer files. It is generally used for source code management in software development.
+*Git is used to tracking changes in the source code
+*The distributed version control tool is used for source code management
+*It allows multiple developers to work together
+*It supports non-linear development through its thousands of parallel branches
+
+* Git doesn’t think of or store its data this way. 
+ Instead, Git thinks of its data more like a series of snapshots of a miniature filesystem. 
+ With Git, every time you commit, or save the state of your project, Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot.
+ To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. 
+ Git thinks about its data more like a stream of snapshots.
+
+*This is an important distinction between Git and nearly all other VCSs. It makes Git reconsider almost every aspect of version control that most other systems copied from the previous generation. 
+This makes Git more like a mini filesystem with some incredibly powerful tools built on top of it, rather than simply a VCS.
+
+*Git is software that runs locally. Your files and their history are stored on your computer. You can also use online hosts (such as GitHub or Bitbucket) to store a copy of the files and their revision history. Having a centrally located place where you can upload your changes and download changes from others, enable you to collaborate more easily with other developers. Git can automatically merge the changes, so two people can even work on different parts of the same file and later merge those changes without loosing each other’s work!
+
+*Git is the most commonly used version control system. Git tracks the changes you make to files, so you have a record of what has been done, and you can revert to specific versions should you ever need to. Git also makes collaboration easier, allowing changes by multiple people to all be merged into one source. 
+
+So regardless of whether you write code that only you will see, or work as part of a team, Git will be useful for you.
+
+--> How to use it?
+
+*Git is software that you can access via a command line (terminal), or a desktop app that has a GUI (graphical user interface) such as Sourcetree.
+
+-->Types:-
+----------
+
+
+
+
+
+
+-> History:-
+-------------
+
+*As with many great things in life, Git began with a bit of creative destruction and fiery controversy.
+
+* The Linux kernel is an open source software project of fairly large scope.
+ During the early years of the Linux kernel maintenance (1991–2002), changes to the software were passed around as patches and archived files. 
+ In 2002, the Linux kernel project began using a proprietary DVCS called BitKeeper.
+ In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked. 
+ This prompted the Linux development community (and in particular Linus Torvalds, the creator of Linux) to develop their own tool based on some of the lessons they learned while using BitKeeper. 
+ Some of the goals of the new system were as follows:
+
+1.Speed
+
+2.Simple design
+
+3.Strong support for non-linear development (thousands of parallel branches)
+
+4.Fully distributed
+
+5.Able to handle large projects like the Linux kernel efficiently (speed and data size)
+
+6.Since its birth in 2005, Git has evolved and matured to be easy to use and yet retain these initial qualities. It’s amazingly fast, it’s very efficient with large projects, and it has an incredible branching system for non-linear development (See Git Branching).
+
+* Linus Torvalds created Git in 2005 for the development of the Linux kernel.
+
+
+->Why do we need to use GIT:-
+-----------------------------
+*Developers used to submit their codes to the central server without having copies of their own
+*Any changes made to the source code were unknown to the other developers
+*There was no communication between any of the developers
+
+features of using GIT:
+
+*Tracks history
+*Free and open source
+*Supports non-linear development
+*Creates backups
+*Scalable
+*Supports collaboration
+*Branching is easier
+*Distributed development
+
+*Nowadays, we have code everywhere. We need to patch bugs, find how and why a bug was introduced to fix it, find when a functionality was added and by who, thus we need what is called "version control".
+
+*Version control is a bunch of things to solve the problem stated above:
+
+*handling a bunch of small changes (= commit)
+*commits are signed to know who made them, thus who made the changes listed by a commit
+*handling different version of the same code (= branches) at the same time
+*ability to take 2 branches, compare them, and assemble them together (= merging branches)
+*ability to create your own copy (= forking) of a collection of files (= repository) to modify your copy and suggest changes (= make a pull request)
+*And git is a tool to do all those things!
+
+--> "Use Cases Of GIT:
+----------------------
+
+*Classic git use cases
+
+Use Case #1 : Git clone someone else's repository & Git push to your own repository:-
+____________________________________________________________________________________
+I)Linked to origin repo:
+-------------------------
+
+1. Create a new repository at github.com. (this is your repository)
+   Give it the same name as the other repository.
+   Don't initialize it with a README, .gitignore, or license.
+
+2. Clone the other repository to your local machine. (if you haven't done so already)
+   git clone https://github.com/other-account/other-repository.git
+
+3. Rename the local repository's current 'origin' to 'upstream'.
+   git remote rename origin upstream
+
+4. Give the local repository an 'origin' that points to your repository.
+   git remote add origin https://github.com/your-account/your-repository.git
+
+5. Push the local repository to your repository on github.  
+   git push origin master
+
+II) Unlinked to origin repo:
+----------------------------
+1. Create a new repository at github.com. (this is your repository)
+   Give it the same name as the other repository.
+   Don't initialize it with a README, .gitignore, or license.
+ 
+2. Clone the other repository to your local machine. (if you haven't done so already)
+   git clone https://github.com/other-account/other-repository.git 
+
+3. Change the local repository's current 'origin' to a new url.
+   git remote set-url origin http://github.com/YOU/YOUR_REPO
+
+4. Push the local repository to your repository on github.
+   git push origin master
+
+_____________________________________________________________________________________
+
+Use Case #2 : Undo last git push:-
+________________________________
+
+Template:-
+
+ git push -f origin last_known_good_commit:branch_name
+
+Usual (master branch):-
+
+git push -f origin full_commit_code:master
+ 
+
+__________________________________________________________________________________________
+
+Use Case #3 : Move git folder to child folder:-
+_____________________________________________________
+1. Manually move your .git folder to the place you want it (target_dir)
+
+2. Navigate to that folder
+      
+        cd target_dir
+
+3. Then add all the changes to the staging area. Git will detect these files as renamed versions of old files that were 'lost' and so no history will be lost.
+      
+           git add.
+
+4. Commit all the changes with the -a command. The -a command stands for all. 
+It tells the commit command to automatically stage files that have been modified and deleted whilst new files that you have not told Git about are not affected.
+     
+       git commit -a -m "move git folder fix"
+
+5.Finally, push the changes to your repo.
+       git push
+
+____________________________________________________________________________________________________________________________________________
+
+
+Use Case #4 : Duplicate a repo:-
+_______________________________
+
+
+1. Move to a scratch dir
+
+    i. mkdir foo
+    ii. cd foo
+
+2. Make a bare clone of the repository
+    i.git clone --bare https://github.com/exampleuser/old-repository.git
+
+3. Mirror-push to the new repository
+
+    i.cd old-repository.git
+    ii.git push --mirror https://github.com/exampleuser/new-repository.git
+
+4. Manually delete the old "foo" folder
+
+_______________________________________________________________________________________________________________
+
+-> Commands:-
+-------------
+
+1.INIT :Creates a local repository
+   
+   $git intit
+
+   
+2.CLONE: Checkout a repository and creates a local copy of it.
+  
+    $git clone path_repi
+
+3.STATUS:To see the state of your files(modified ,added,remote...)
+   
+     $git status
+
+4.ADD: add fiels to your staging area 
+    
+    $git add"file_name" 
+   
+5.CHECKOUT : checkout a tracked file to untracked file .
+      This command is also used for switching between branches
+
+   $git checkout
+
+6.LOG : to get the history of your commits or commits made by someone else 
+
+    $ git log
+    
+7.FETCH: Updates remote respository without merging with your local
+
+      $git fetch "remote_name"
+
+8.PUSH: pushes your commits ,branches 
+
+        $git push "remote_name"
+
+9.PULL: Updates remote respository and merge changes with your repo
+
+      $git pull "remote_name"
+
+
+9.REMOTE: shows the remote respository name that by default is origin 
+     
+    $git remote 'origin'
+
+  
+10.COMMIT: commit a stage file 
+
+    $git commit - m "message"
+
+________________________________________________________________________________________________________________________________________
+
+-> Scenarios based commands:-
+-----------------------------
+
+# good git book
+http://git-scm.com/book
+
+# Discard uncommitted changes in a specific file
+git checkout file_name
+
+# Clear everything not in repo
+git checkout -- .
+
+# A way to quickly move to the previous commit in a git branch. This also way for "deleting" last commit.
+git reset --hard HEAD~1
+# Move to the "next" commit, to the origin head.
+git reset --hard ORIG_HEAD
+
+# Move master branch to any other place
+git reset --hard other_branch_name
+git reset --hard 3k3k_commit_hash
+
+# Undo a commit and redo (simple scenario, forget to change sth)
+git commit -m 'initial commit'
+edit file
+git commit -a --amend
+
+
+# When in progress of developing something and you realized that it's better to do it in new branch.
+git checkout -b new_branch
+# you can as well use 'git stash', but branches are overall cheap and better express putting work on a side
+# http://codingkilledthecat.wordpress.com/2012/04/27/git-stash-pop-considered-harmful/
+
+# When moving file to different folder and renaming at the moment there is enough to by only one commit. First make 
+git mv file_name #and then edit file(s).
+
+# Check how code behaves on previous commit without playing with branches
+git checkout Head^
+#You are in 'detached HEAD' state. To go back:
+git checkout master
+
+# Revert all not committed changes. Do not delete new created files.
+$ git reset –hard HEAD
+
+# Remove from index (repository), file remains in folder
+git rm --cached file_name
+
+# Remove from repository and from folder
+git rm file_name
+
+
+# Commands for creating new repo
+do it always on github cause sharing and having backup is very important.
+git init # for only local temporary repository
+
+# Get deleted files into the staging area. If you run git add . these files won’t be put into the staging area to be marked as deleted on the next commit. Run:
+git add -u
+
+# Get just one file from another branch
+git checkout experiment -- app.js
+# Get just one file from any commit
+git checkout sha123 app.js
+
+# Checkout previous branch
+git checkout -
+
+# Pull data with rebase
+git pull --rebase
+# Make --rebase default
+git config --global --bool pull.rebase true
+
+
+# remove untracked files
+git clean -f 
+git clean -fd # with directories
+
+
+## Commit just one file
+git commit FileName -m 'commit msq'
+
+
+_________________________________________________________________________________________________________________________________________
+
+Respository:-
+---------------
+
+
+*Repositories in GIT contain a collection of files of various different versions of a Project. 
+*These files are imported from the repository into the local server of the user for further updations and modifications in the content of the file.
+* A VCS or the Version Control System is used to create these versions and store them in a specific place termed a repository.
+*The process of copying the content from an existing Git Repository with the help of various Git Tools is termed cloning. 
+*Once the cloning process is done, the user gets the complete repository on his local machine. 
+*Git by default assumes the work to be done on the repository is as a user, once the cloning is done.
+*Users can also create a new repository or delete an existing repository. 
+*To delete a repository, the simpler way is to just delete the folder containing the repository. 
+*Repositories can be divided into two types based on the usage on a server. These are:
+-----
+
+1.Bare Repositories: 
+--------------------
+These repositories are used to share the changes that are done by different developers. 
+A user is not allowed to modify this repository or create a new version for this repository based on the modifications done.
+
+
+2.Non-bare Repositories: 
+------------------------
+Non-bare repositories are user-friendly and hence allow the user to create new modifications of files and also create new versions for the repositories.
+ The cloning process by default creates a non-bare repository if any parameter is not specified during the clone operation.
+ 
+** there are a few stages of a file in the working tree of a repository:
+ 
+*Untracked: In this stage, the Git repository is unable to track the file, which means that the file is never staged nor it is committed.
+*Tracked: When the Git repository tracks a file, which means the file is committed but is not staged in the working directory.
+*Staged: In this stage, the file is ready to be committed and is placed in the staging area waiting for the next commit.
+*Modified/Dirty: When the changes are made to the file i.e. the file is modified but the change is not yet staged.
+
+After the changes are done in the working area, the user can either update these changes in the GIT repository or revert the changes.
+
+***Working with a Repository:-
+-------------------------------
+A GIT repository allows performing various operations on it to create different versions of a project. These operations include the addition of files, creating new repositories, committing an action, deleting a repository, etc. These modifications will result in the creation of different versions of a project.
+
+Adding to a Repository
+After performing various modifications on a file in the Working Area, GIT needs to follow two more steps to save these changes in the local repository. These steps are:
+
+Adding the changes to the Index(Staging Area)
+Committing the indexed changes into the repository
+Adding changes to the Index This process is done by the use of git add command. When the changes have been made in the Working Tree/Area. These changes need to be added to the Staging Area for further modification of the file. git add command adds the file in the local repository. This stages them for the commit process.
+
+Syntax:
+
+$ git add File-name
+Different ways to use add command: 
+
+$ git add .
+To add a specific list of files to the staging area.
+
+$ git add --all
+To add all files of the current directory to a staging area.
+
+$ git add *.txt
+To add all text files of the current directory to staging area.
+
+$ git add docs/*.txt
+To add all text files of a particular directory(docs) to staging area.
+
+$ git add docs/
+To add all files in a particular directory(docs) to staging area.
+
+$ git add “*.txt”
+To add text files of entire project to staging area. Committing changes from the Index Committing process is done in the staging area on the files which are added to the Index after git add command is executed. This committing process is done by the use of git commit command. This command commits the staged changes to the local repository. Syntax:
+
+$ git commit -m "Add existing file"
+This commit command is used to add any of the tracked files to staging area and commit them by providing a message to remember.
+
+
+
+***Synchronizing with Remote Repositories:-
+-------------------------------------------
+Git allows the users to perform operations on the Repositories by cloning them on the local machine. This will result in the creation of various different copies of the project. These copies are stored on the local machine and hence, the users will not be able to sync their changes with other developers. To overcome this problem, Git allows performing syncing of these local repositories with the remote repositories. This synchronization can be done by the use of two commands in the Git. These commands are:
+
+push
+pull
+
+Push: This command is used to push all the commits of the current repository to the tracked remote repository. This command can be used to push your repository to multiple repositories at once. Syntax:
+
+$ git push -u origin master
+To push all the contents of our local repository that belong to the master branch to the server(Global repository).   
+Pull: Pull command is used to fetch the commits from a remote repository and stores them in the remote branches. There might be a case when other users perform changes on their copy of repositories and upload them with other remote repositories. 
+But in that case, your copy of the repository will become out of date. Hence, to re-synchronize your copy of the repository with the remote repository, the user has to just use the git pull command to fetch the content of the remote repository. 
+Syntax:
+$ git pull
+
+
+Some more commands:
+Git Status: It is used for checking the status of git repository, i.e., if the files are committed or not, files in staging area or untracked file.
+
+$ git status
+Git Log: It is used to track all the changes made, and by whom. Its command is 
+
+$ git log
+.gitignore: You may use .gitignore if you want to hide any file when uploading online. Just simply create a .gitignore file, and write all the files names you want to ignore.
+
+Git Merge: It is used to merge two repository, without losing the data. It merge the specified repository to the current repository.
+
+$ git merge <repo-name>
+
+Git Checkout: It is used to rollback to previous version of the project which was committed anytime earlier. You can copy to hash-code from git log and use it to rollback. Let’s have a look over the code:
+
+$ git checkout <hash-code>
+
+
+clear all files in repo : rm -rf .git
+
+present directory : pwd 
+
+list of files : ls
+
+clone: git clone url file_name
+
+touch file_name.log create new file
+
+touch .gitignore creates ignore type file 
+add one by git add
+or multiple by adding .*log to add all .log files to be ignored
+and for folder file_name/
+
+
+git diff compares files in working area and staging area.
+git diff --staged shows previous commit  and current staging area. 
